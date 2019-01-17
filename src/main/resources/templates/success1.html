@@ -5,6 +5,7 @@
     <title>Echarts</title>
     <!-- 引入 ECharts 文件 -->
     <script src="/webjars/echarts/4.0.4/dist/echarts.js"></script>
+    <script sre="echarts/jquery.js"></script>
 </head>
 <body>
     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
@@ -30,7 +31,21 @@
             series: [{
                 name: '销量',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
+                data: (function () {
+                    var datas=[];
+                    $.ajax({
+                        type: "post",
+                        url: "/user",
+                        dataYype: 'json',
+                        async: false,
+                        success: function (result) {
+                            for(var i=0;i<result.length;i++){
+                             datas.push({"name":result[i].name,"age":result[i].age})
+                            }
+                        }
+                    })
+                    return datas;
+                })(),
             }]
         };
 

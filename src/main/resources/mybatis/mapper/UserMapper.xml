@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.springbootmybatis.multi.UserDao">
+<mapper namespace="com.example.springbootmybatis.multi.UserMapper">
     <select id="getUserId" resultType="com.example.springbootmybatis.model.UserInfo">
         select * from users
     </select>
     <select id="getUserList" resultType="com.example.springbootmybatis.model.UserInfo">
-        select * from users
+        select * from users where d_id=10
     </select>
 </mapper>
